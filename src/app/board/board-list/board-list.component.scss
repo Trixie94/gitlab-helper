@@ -1,0 +1,105 @@
+.header {
+  text-align: center;
+  margin: 0 20px;
+  border-radius: 5px;
+}
+
+.container {
+  width: 350px;
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: 0 20px;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.single-issue {
+  padding: 10px 15px;
+  margin: 20px 0;
+  background-color: white;
+  min-height: 70px;
+  border-radius: 10px;
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 15px 5px 0 0;
+    &__avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50px;
+    }
+    &__buttons {
+      &__gitlab {
+        outline: none;
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
+        max-height: 30px;
+        padding: 0;
+        svg {
+          width: 35px;
+          height: 35px;
+          path {
+            fill: gray;
+          }
+        }
+      }
+      &__gitlab:hover {
+        svg {
+          path {
+            fill: black;
+          }
+        }
+      }
+    }
+  }
+}
+
+.whole-window {
+  max-height: 70vh;
+  min-height: 20vh;
+  overflow-y: auto;
+  width: 50%;
+  background-color: white;
+  // background-color: #e0e0e0;
+  color: black;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  border-radius: 10px;
+  &__close-window {
+    position: absolute;
+    width: 60px;
+    top: 0;
+    left: calc(100% - 64px);
+    background-color: #1565c0;
+    color: white;
+  }
+}
+
+.title-button {
+  display: flex;
+  justify-content: space-between;
+}
+
+.x-button {
+  display: flex;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+// .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label, .mat-form-field-empty.mat-form-field-label {
+//   color: white !important
+// }

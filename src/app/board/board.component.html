@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="buttons-container">
+    <div class="buttons">
+      <mat-form-field class="buttons-container__group">
+        <mat-label>Group</mat-label>
+        <mat-select [formControl]="groupsControl">
+          <mat-option *ngFor="let group of groups" [value]="group.name" (click)="showBoard(group)">{{group.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="boardsGroup">
+        <mat-label>Board</mat-label>
+        <mat-select [formControl]="boardControl">
+          <mat-option *ngFor="let board of boards | keyvalue" [value]="board.key" (click)="createBoard(board.value)">
+            {{board.key}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="assignees">
+        <mat-label>Assignee</mat-label>
+        <mat-select [formControl]="assigneeControl">
+          <mat-option *ngFor="let assignee of assignees" [value]="assignee.name" (click)="showByAssignee(assignee.id)">
+            {{assignee.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="title">
+      <p>GitLab Helper</p>
+    </div>
+  </div>
+
+  <div class="container-label" *ngIf="activeLabels.labels?.length > 0">
+    <app-board-list [label]="labels[label]" [colorLabels]="labels" [allLabels]="activeLabels" [groupId]="currentGroupId"
+      [filterAssignee]="assigneeId" *ngFor="let label of activeLabels.labels">
+    </app-board-list>
+  </div>
+</div>

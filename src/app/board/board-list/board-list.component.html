@@ -1,0 +1,30 @@
+<div class="header" [style.background-color]="label.color" [style.color]="label.text_color">
+  {{label.name}}
+</div>
+
+<div class="container">
+  <div class="single-issue" *ngFor="let issue of issues"
+    [ngStyle]="{ 'border-left': colorSide('0', issue), 'border-right': colorSide('1', issue) }"
+    (click)="showDetails(issue)">
+    {{issue.title}}
+    <div class="single-issue__footer">
+      <button class="single-issue__footer__buttons__gitlab" (click)="goToIssue(issue.web_url)">
+        <svg-icon src="assets/images/gitlab3.svg" [applyCss]="true"></svg-icon>
+      </button>
+      <img class="single-issue__footer__avatar" [src]="issue.assignees[0]?.avatar_url" *ngIf="issue.assignees[0]" />
+      <img class="single-issue__footer__avatar" src="assets/images/no-user.png" *ngIf="!issue.assignees[0]" />
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="issueDetails">
+  <div class="whole-window">
+    <div class="title-button">
+      <p>{{issueDetails.title}}</p>
+      <button class="x-button" (click)="closeDetails()">X</button>
+    </div>
+    <markdown [data]="issueDetails.description" *ngIf="issueDetails.description"></markdown>
+    <!-- <p *ngIf="issueDetails.description">{{issueDetails.description}}</p> -->
+    <p *ngIf="!issueDetails.description">NO DESCRIPTION PROVIDED</p>
+  </div>
+</ng-container>
